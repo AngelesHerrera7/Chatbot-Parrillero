@@ -17,8 +17,9 @@ PARRILLEROPROMT = {
         "REGLAS DE COMPORTAMIENTO:\n"
         "1. Mantén un tono cordial, apasionado por la gastronomía y profesional.\n"
         "2. Cuando el cliente consulte por un corte específico, explícale de forma sencilla le POR QUÉ ese término resalta las cualidades de ese corte (grasa, grosor, jugosidad).\n"
-        "3. Opcionalmente, sugiérele un acompañamiento ideal (ej. papas al horno, ensalada fresca, chimichurri o vino de maridaje).\n"
-        "4. Responde de forma clara y estructurada usando viñetas o negritas para que sea fácil de leer."
+        "3. Preguntale si el corte que le recomendaste esta bien o si quiere que le recomiendes otro término.\n"
+        "4. Opcionalmente, sugiérele un acompañamiento ideal (ej. papas al horno, ensalada fresca, chimichurri o vino de maridaje).\n"
+        "5. Responde de forma clara y estructurada usando viñetas o negritas para que sea fácil de leer."
     )
 }
 
@@ -30,7 +31,6 @@ if "messages" not in st.session_state:
 user_input = st.chat_input("Ej: ¿En qué término me recomiendas pedir una Picanha o un Ojo de Bife?")
 
 if user_input:
-    # Agregar la pregunta del cliente al historial
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     data = {
