@@ -1,3 +1,24 @@
+
+graph TD
+    subgraph Capa_Presentacion ["Capa de Presentación"]
+        A["👤 Usuario / Cliente"] -->|Escribe consulta| B["💻 Interfaz Streamlit (UI)"]
+        B -->|Gestiona sesión| C["💾 st.session_state (Memoria temporal)"]
+    end
+
+    subgraph Capa_Procesamiento ["Capa de Procesamiento"]
+        C -->|Pasa historial + prompt| D["⚙️ Prompt Engine (Context Builder)"]
+        D -->|Petición HTTP POST / JSON| E["🌐 API REST (http://localhost:11434)"]
+    end
+
+    subgraph Capa_IA ["Capa de Inferencia (IA)"]
+        E -->|Recibe request| F["🦙 Servidor Ollama"]
+        F -->|Procesa tokens| G["🧠 Modelo Llama 3.2"]
+    end
+
+    G -->|Genera respuesta| F
+    F -->|Devuelve JSON| E
+    E -->|Renderiza mensaje| B
+
 # Chat Bot Parrillero
 
 Aplicación de Streamlit para recomendar el término ideal de cocción de carne según el corte solicitado.
