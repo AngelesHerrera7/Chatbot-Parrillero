@@ -1,8 +1,8 @@
 ```mermaid
 graph TD
     subgraph Capa1 ["1. CAPA DE PRESENTACIÓN"]
-        A["👤 Usuario / Cliente"] -->|Escribe consulta| B["💻 Interfaz Streamlit app.py"]
-        B -->|Guarda historial| C["💾 st.session_state"]
+        A[" Usuario / Cliente"] -->|Escribe consulta| B[" Interfaz Streamlit app.py"]
+        B -->|Guarda historial| C[" st.session_state"]
     end
 
     subgraph Capa2 ["2. CAPA DE PROCESAMIENTO"]
@@ -11,15 +11,16 @@ graph TD
     end
 
     subgraph Capa3 ["3. CAPA DE INFERENCIA IA"]
-        E -->|Recibe request| F["🦙 Servidor Local Ollama"]
-        F -->|Procesa tokens| G["🧠 Modelo Llama 3.2"]
+        E -->|Recibe request| F[" Servidor Local Ollama"]
+        F -->|Procesa tokens| G[" Modelo Llama 3.2"]
     end
 
     subgraph Capa4 ["4. CAPA DE RETORNO Y SALIDA"]
         G -->|Devuelve respuesta| F
         F -->|Retorna JSON| E
-        E -->|Renderiza mensaje| H["🥩 Respuesta en Pantalla"]
+        E -->|Renderiza mensaje| H[" Respuesta en Pantalla"]
     end
+```
 
 # Chat Bot Parrillero
 
