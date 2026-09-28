@@ -1,23 +1,25 @@
-
+```mermaid
 graph TD
-    subgraph Capa_Presentacion ["Capa de Presentación"]
-        A["👤 Usuario / Cliente"] -->|Escribe consulta| B["💻 Interfaz Streamlit (UI)"]
-        B -->|Gestiona sesión| C["💾 st.session_state (Memoria temporal)"]
+    subgraph Capa1 ["1. CAPA DE PRESENTACIÓN"]
+        A["👤 Usuario / Cliente"] -->|Escribe consulta| B["💻 Interfaz Streamlit app.py"]
+        B -->|Guarda historial| C["💾 st.session_state"]
     end
 
-    subgraph Capa_Procesamiento ["Capa de Procesamiento"]
-        C -->|Pasa historial + prompt| D["⚙️ Prompt Engine (Context Builder)"]
-        D -->|Petición HTTP POST / JSON| E["🌐 API REST (http://localhost:11434)"]
+    subgraph Capa2 ["2. CAPA DE PROCESAMIENTO"]
+        C -->|Pasa mensaje + Prompt| D["⚙️ Context Builder Prompt Engine"]
+        D -->|Petición HTTP POST / JSON| E["🌐 API REST http://localhost:11434"]
     end
 
-    subgraph Capa_IA ["Capa de Inferencia (IA)"]
-        E -->|Recibe request| F["🦙 Servidor Ollama"]
+    subgraph Capa3 ["3. CAPA DE INFERENCIA IA"]
+        E -->|Recibe request| F["🦙 Servidor Local Ollama"]
         F -->|Procesa tokens| G["🧠 Modelo Llama 3.2"]
     end
 
-    G -->|Genera respuesta| F
-    F -->|Devuelve JSON| E
-    E -->|Renderiza mensaje| B
+    subgraph Capa4 ["4. CAPA DE RETORNO Y SALIDA"]
+        G -->|Devuelve respuesta| F
+        F -->|Retorna JSON| E
+        E -->|Renderiza mensaje| H["🥩 Respuesta en Pantalla"]
+    end
 
 # Chat Bot Parrillero
 
